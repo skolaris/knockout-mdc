@@ -1,0 +1,35 @@
+{
+	"name": "@knockout-mdc/material-progress",
+	"description": "A Knockout.js adapter for mdc-linear-progress in form of a component called material-progress",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"adapter",
+		"mdc-linear-progress"
+	],
+	"main": "material-progress.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-progress"
+	},
+	"author": "Martin Klemsa",
+	"dependencies": {
+		"@material/linear-progress": "^14.0.0"
+	},
+	"peerDependencies": {
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
