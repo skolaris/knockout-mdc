@@ -1,0 +1,32 @@
+{
+	"name": "@knockout-mdc/mdc-tools",
+	"description": "A set of tools for creating adapters from MDC components to Knockout.js",
+	"version": "1.0.1",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"adapter",
+		"tools"
+	],
+	"main": "tools.mdc.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "mdc-tools"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
