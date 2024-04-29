@@ -1,21 +1,26 @@
 {
-	"name": "@knockout-mdc/material-badge",
-	"description": "A KnockoutJS material design badge component",
+	"name": "@knockout-mdc/material-checkbox",
+	"description": "A KnockoutJS adapter for mdc-checkbox in form of a component called material-checkbox",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
 		"mdc",
-		"badge"
+		"checkbox",
+		"adapter",
+		"mdc-checkbox"
 	],
-	"main": "material-badge.js",
+	"main": "material-checkbox.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/skolaris/knockout-mdc.git",
-		"directory": "material-badge"
+		"directory": "material-checkbox"
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
+		"@material/checkbox": "^14.0.0",
+		"@material/form-field": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
 		"knockout": "^3.5.1"
 	},
 	"scripts": {

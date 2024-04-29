@@ -57,8 +57,7 @@
 	return {
 		'viewModel': MaterialProgress,
 		'template':
-`
-<div role="progressbar" class="mdc-linear-progress" aria-valuemin="0" aria-valuemax="1" data-bind="attr: getAttrs(), css: getCss()">
+`<div role="progressbar" class="mdc-linear-progress" aria-valuemin="0" aria-valuemax="1" data-bind="attr: getAttrs(), css: getCss()">
 	<div class="mdc-linear-progress__buffer">
 		<div class="mdc-linear-progress__buffer-bar"></div>
 		<div class="mdc-linear-progress__buffer-dots"></div>
@@ -69,7 +68,6 @@
 	<div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
 		<span class="mdc-linear-progress__bar-inner"></span>
 	</div>
-</div>
-`		
+</div>`
 	};
 }));

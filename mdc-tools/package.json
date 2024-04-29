@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/mdc-tools",
-	"description": "A set of tools for creating adapters from MDC components to Knockout.js",
+	"description": "A set of tools for creating adapters from MDC components to KnockoutJS",
 	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [

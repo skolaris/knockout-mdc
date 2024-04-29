@@ -1,2 +1,2 @@
 # knockout-mdc
-Knockout JS adapters for material web components
+KnockoutJS adapters for material web components

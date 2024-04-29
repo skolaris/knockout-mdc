@@ -14,7 +14,6 @@
 	}
 }(typeof self !== 'undefined' ? self : this, function() {
 	return {
-		'template':
-`<div class="material-badge__content" data-bind="template: {'nodes': $componentTemplateNodes, data: $parent}"></div>`
+		'template': `<div class="material-badge__content" data-bind="template: {'nodes': $componentTemplateNodes, data: $parent}"></div>`
 	};
 }));
