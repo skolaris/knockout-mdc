@@ -35,8 +35,9 @@
 			if (!node.isConnected)
 				return;
 
+			node.classList.add('mdc-form-field');
 			this.mdcCheckbox = new materialCheckbox.MDCCheckbox(node.querySelector('.mdc-checkbox'));
-			this.mdcFormField = new materialFormField.MDCFormField(node.querySelector('.mdc-form-field'));
+			this.mdcFormField = new materialFormField.MDCFormField(node);
 			this.mdcFormField.input = this.mdcCheckbox;
 		},
 		'dispose': function() {
@@ -56,21 +57,19 @@
 	return {
 		'viewModel': MaterialCheckbox,
 		'template':
-`<div class="mdc-form-field">
-	<div class="mdc-checkbox">
-		<input type="checkbox" class="mdc-checkbox__native-control" data-bind="id: id, checked: checked, enable: enable, click: onClicked" />
-		<div class="mdc-checkbox__background">
-			<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-				<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-			</svg>
-			<div class="mdc-checkbox__mixedmark"></div>
-		</div>
-		<div class="mdc-checkbox__ripple"></div>
-		<div class="mdc-checkbox__focus-ring"></div>
+`<div class="mdc-checkbox">
+	<input type="checkbox" class="mdc-checkbox__native-control" data-bind="id: id, checked: checked, enable: enable, click: onClicked" />
+	<div class="mdc-checkbox__background">
+		<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+			<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+		</svg>
+		<div class="mdc-checkbox__mixedmark"></div>
 	</div>
-	<!-- ko if: hasLabel -->
-	<label data-bind="attr: {'for': id}, html: label"></label>
-	<!-- /ko -->
-</div>`
+	<div class="mdc-checkbox__ripple"></div>
+	<div class="mdc-checkbox__focus-ring"></div>
+</div>
+<!-- ko if: hasLabel -->
+<label data-bind="attr: {'for': id}, html: label"></label>
+<!-- /ko -->`
 	};
 }));
