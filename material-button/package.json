@@ -1,0 +1,35 @@
+{
+	"name": "@knockout-mdc/material-button",
+	"description": "A KnockoutJS adapter for mdc-button in form of a component called material-button",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"button",
+		"adapter",
+		"mdc-button"
+	],
+	"main": "material-button.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-button"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@material/button": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
