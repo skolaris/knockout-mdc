@@ -1,0 +1,35 @@
+{
+	"name": "@knockout-mdc/material-fab",
+	"description": "A KnockoutJS adapter for mdc-fab in form of a component called material-fab",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"fab",
+		"adapter",
+		"mdc-fab"
+	],
+	"main": "material-fab.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-fab"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@material/fab": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
