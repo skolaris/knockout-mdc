@@ -92,6 +92,18 @@
 			});
 			observer.observe(node);
 			return observer;
+		},
+
+		//Recalculates the layout of parentElement's child mdc components.
+		//This is useful to call when a dialog finishes opening or the page layout changes,
+		//e.g. by a side panel sliding in and moving all content sideways.
+		'layoutMdcComponents': function(parentElement) {
+			const mdcElements = parentElement.querySelectorAll('[class*="mdc-"]');
+			mdcElements.forEach(el => {
+				const mdcComponent = this.getMdcComponent(el);
+				if (typeof mdcComponent?.layout === 'function')
+					mdcComponent?.layout();
+			});
 		}
 	};
 }));

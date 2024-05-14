@@ -35,7 +35,7 @@
 			const el = node.querySelector('.mdc-icon-button');
 			const iconButtonToggle = this.mdcIconButtonToggle = new materialIconButton.MDCIconButtonToggle(el);
 			mdcTools.setMdcComponent(el, iconButtonToggle);
-			mdcTools.setMdcComponent(el.querySelector('.mdc-icon-button__ripple'), iconButtonToggle.ripple());
+			mdcTools.setMdcComponent(el.querySelector('.mdc-icon-button__ripple'), iconButtonToggle.rippleComponent);
 
 			iconButtonToggle.on = this.value();
 			this._valueSubscription = this.value.subscribe(newVal => {
