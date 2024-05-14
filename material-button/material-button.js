@@ -1,21 +1,22 @@
 ﻿(function(root, factory) {
 	const toolsPackageName = '@skolaris/knockout-tools',
+		mdcToolsPackageName = '@knockout-mdc/mdc-tools',
 		mdcRipplePackageName = '@material/ripple';
 
 	if (typeof define === 'function' && define.amd) {
 		//AMD. Register as an anonymous module.
-		define([toolsPackageName, mdcRipplePackageName], factory);
+		define([toolsPackageName, mdcToolsPackageName, mdcRipplePackageName], factory);
 	}
 	else if (typeof module === 'object' && module.exports) {
 		//Node. Does not work with strict CommonJS, but only CommonJS-like environments that support module.exports like Node.
-		module.exports = factory(require(toolsPackageName), require(mdcRipplePackageName));
+		module.exports = factory(require(toolsPackageName), require(mdcToolsPackageName), require(mdcRipplePackageName));
 	}
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-button'] = factory(root.knockoutTools, root.mdc.ripple);
+		root.knockoutMdc['material-button'] = factory(root.knockoutTools, root.knockoutMdc.mdcTools, root.mdc.ripple);
 	}
-}(typeof self !== 'undefined' ? self : this, function(tools, materialRipple) {
+}(typeof self !== 'undefined' ? self : this, function(tools, mdcTools, materialRipple) {
 
 	const MaterialButton = function(params) {
 		//data binding
@@ -41,6 +42,8 @@
 
 			const el = node.querySelector('.mdc-button');
 			this.mdcRipple = new materialRipple.MDCRipple(el);
+			mdcTools.setMdcComponent(el, this.mdcRipple);
+
 			if (this.autofocus)
 				el.focus();
 		},

@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-checkbox",
 	"description": "A KnockoutJS adapter for mdc-checkbox in form of a component called material-checkbox",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

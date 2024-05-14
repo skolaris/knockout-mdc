@@ -1,22 +1,23 @@
 ﻿(function(root, factory) {
 	const toolsPackageName = '@skolaris/knockout-tools',
+		mdcToolsPackageName = '@knockout-mdc/mdc-tools',
 		mdcCheckboxPackageName = '@material/checkbox',
 		mdcFormFieldPackageName = '@material/form-field';
 
 	if (typeof define === 'function' && define.amd) {
 		//AMD. Register as an anonymous module.
-		define([toolsPackageName, mdcCheckboxPackageName, mdcFormFieldPackageName], factory);
+		define([toolsPackageName, mdcToolsPackageName, mdcCheckboxPackageName, mdcFormFieldPackageName], factory);
 	}
 	else if (typeof module === 'object' && module.exports) {
 		//Node. Does not work with strict CommonJS, but only CommonJS-like environments that support module.exports like Node.
-		module.exports = factory(require(toolsPackageName), require(mdcCheckboxPackageName), require(mdcFormFieldPackageName));
+		module.exports = factory(require(toolsPackageName), require(mdcToolsPackageName), require(mdcCheckboxPackageName), require(mdcFormFieldPackageName));
 	}
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-checkbox'] = factory(root.knockoutTools, root.mdc['checkbox'], root.mdc['form-field']);
+		root.knockoutMdc['material-checkbox'] = factory(root.knockoutTools, root.knockoutMdc.mdcTools, root.mdc.checkbox, root.mdc['form-field']);
 	}
-}(typeof self !== 'undefined' ? self : this, function(tools, materialCheckbox, materialFormField) {
+}(typeof self !== 'undefined' ? self : this, function(tools, mdcTools, materialCheckbox, materialFormField) {
 
 	const MaterialCheckbox = function(params) {
 		this.checked = params.checked;
@@ -36,8 +37,14 @@
 				return;
 
 			node.classList.add('mdc-form-field');
-			this.mdcCheckbox = new materialCheckbox.MDCCheckbox(node.querySelector('.mdc-checkbox'));
+
+			const el = node.querySelector('.mdc-checkbox');
+			this.mdcCheckbox = new materialCheckbox.MDCCheckbox(el);
+			mdcTools.setMdcComponent(el, this.mdcCheckbox);
+
 			this.mdcFormField = new materialFormField.MDCFormField(node);
+			mdcTools.setMdcComponent(node, this.mdcFormField);
+
 			this.mdcFormField.input = this.mdcCheckbox;
 		},
 		'dispose': function() {

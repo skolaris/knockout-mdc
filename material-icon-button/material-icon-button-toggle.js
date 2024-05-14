@@ -1,21 +1,22 @@
 ﻿(function(root, factory) {
 	const toolsPackageName = '@skolaris/knockout-tools',
+		mdcToolsPackageName = '@knockout-mdc/mdc-tools',
 		mdcIconButtonPackageName = '@material/icon-button';
 
 	if (typeof define === 'function' && define.amd) {
 		//AMD. Register as an anonymous module.
-		define([toolsPackageName, mdcIconButtonPackageName], factory);
+		define([toolsPackageName, mdcToolsPackageName, mdcIconButtonPackageName], factory);
 	}
 	else if (typeof module === 'object' && module.exports) {
 		//Node. Does not work with strict CommonJS, but only CommonJS-like environments that support module.exports like Node.
-		module.exports = factory(require(toolsPackageName), require(mdcIconButtonPackageName));
+		module.exports = factory(require(toolsPackageName), require(mdcToolsPackageName), require(mdcIconButtonPackageName));
 	}
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-icon-button-toggle'] = factory(root.knockoutTools, root.mdc['icon-button']);
+		root.knockoutMdc['material-icon-button-toggle'] = factory(root.knockoutTools, root.knockoutMdc.mdcTools, root.mdc['icon-button']);
 	}
-}(typeof self !== 'undefined' ? self : this, function(tools, materialIconButton) {
+}(typeof self !== 'undefined' ? self : this, function(tools, mdcTools, materialIconButton) {
 
 	const MaterialIconButtonToggle = function(params) {
 		this.value = params.value;
@@ -31,10 +32,14 @@
 			if (!node.isConnected)
 				return;
 
-			this.mdcIconButtonToggle = new materialIconButton.MDCIconButtonToggle(node.querySelector('.mdc-icon-button'));
-			this.mdcIconButtonToggle.on = this.value();
+			const el = node.querySelector('.mdc-icon-button');
+			const iconButtonToggle = this.mdcIconButtonToggle = new materialIconButton.MDCIconButtonToggle(el);
+			mdcTools.setMdcComponent(el, iconButtonToggle);
+			mdcTools.setMdcComponent(el.querySelector('.mdc-icon-button__ripple'), iconButtonToggle.ripple());
+
+			iconButtonToggle.on = this.value();
 			this._valueSubscription = this.value.subscribe(newVal => {
-				this.mdcIconButtonToggle.on = newVal;
+				iconButtonToggle.on = newVal;
 			});
 		},
 		'dispose': function() {

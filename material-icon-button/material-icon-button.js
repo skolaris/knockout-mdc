@@ -1,21 +1,22 @@
 ﻿(function(root, factory) {
 	const toolsPackageName = '@skolaris/knockout-tools',
+		mdcToolsPackageName = '@knockout-mdc/mdc-tools',
 		mdcRipplePackageName = '@material/ripple';
 
 	if (typeof define === 'function' && define.amd) {
 		//AMD. Register as an anonymous module.
-		define([toolsPackageName, mdcRipplePackageName], factory);
+		define([toolsPackageName, mdcToolsPackageName, mdcRipplePackageName], factory);
 	}
 	else if (typeof module === 'object' && module.exports) {
 		//Node. Does not work with strict CommonJS, but only CommonJS-like environments that support module.exports like Node.
-		module.exports = factory(require(toolsPackageName), require(mdcRipplePackageName));
+		module.exports = factory(require(toolsPackageName), require(mdcToolsPackageName), require(mdcRipplePackageName));
 	}
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-icon-button'] = factory(root.knockoutTools, root.mdc.ripple);
+		root.knockoutMdc['material-icon-button'] = factory(root.knockoutTools, root.knockoutMdc.mdcTools, root.mdc.ripple);
 	}
-}(typeof self !== 'undefined' ? self : this, function(tools, materialRipple) {
+}(typeof self !== 'undefined' ? self : this, function(tools, mdcTools, materialRipple) {
 
 	const MaterialIconButton = function(params) {
 		this.click = params.click;
@@ -30,7 +31,10 @@
 			if (!node.isConnected)
 				return;
 
-			this.mdcRipple = new materialRipple.MDCRipple(node.querySelector('.mdc-icon-button'));
+			const el = node.querySelector('.mdc-icon-button');
+			this.mdcRipple = new materialRipple.MDCRipple(el);
+			mdcTools.setMdcComponent(el, this.mdcRipple);
+
 			this.mdcRipple.unbounded = true;
 		},
 		'dispose': function() {
