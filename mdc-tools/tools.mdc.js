@@ -102,7 +102,7 @@
 			mdcElements.forEach(el => {
 				const mdcComponent = this.getMdcComponent(el);
 				if (typeof mdcComponent?.layout === 'function')
-					mdcComponent?.layout();
+					mdcComponent.layout();
 			});
 		}
 	};
