@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-fab",
 	"description": "A KnockoutJS adapter for mdc-fab in form of a component called material-fab",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

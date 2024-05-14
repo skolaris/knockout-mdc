@@ -13,7 +13,7 @@
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-snackbar'] = factory(root.knockoutMdc.mdcTools, root.mdc['snackbar']);
+		root.knockoutMdc['material-snackbar'] = factory(root.knockoutMdc.mdcTools, root.mdc.snackbar);
 	}
 }(typeof self !== 'undefined' ? self : this, function(mdcTools, materialSnackbar) {
 

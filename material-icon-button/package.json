@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-icon-button",
 	"description": "KnockoutJS adapters for mdc-icon-button and mdc-icon-button-toggle in form of components called material-icon-button and material-icon-button-toggle",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

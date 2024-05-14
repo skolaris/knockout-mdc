@@ -1,19 +1,21 @@
 (function(root, factory) {
-	const mdcLinearProgressPackageName = '@material/linear-progress';
+	const mdcToolsPackageName = '@knockout-mdc/mdc-tools',
+		mdcLinearProgressPackageName = '@material/linear-progress';
+
 	if (typeof define === 'function' && define.amd) {
 		//AMD. Register as an anonymous module.
-		define([mdcLinearProgressPackageName], factory);
+		define([mdcToolsPackageName, mdcLinearProgressPackageName], factory);
 	}
 	else if (typeof module === 'object' && module.exports) {
 		//Node. Does not work with strict CommonJS, but only CommonJS-like environments that support module.exports like Node.
-		module.exports = factory(require(mdcLinearProgressPackageName));
+		module.exports = factory(require(mdcToolsPackageName), require(mdcLinearProgressPackageName));
 	}
 	else {
 		//Browser globals (root is window)
 		root.knockoutMdc = root.knockoutMdc || {};
-		root.knockoutMdc['material-progress'] = factory(root.mdc['linear-progress']);
+		root.knockoutMdc['material-progress'] = factory(root.knockoutMdc.mdcTools, root.mdc['linear-progress']);
 	}
-}(typeof self !== 'undefined' ? self : this, function(materialLinearProgress) {
+}(typeof self !== 'undefined' ? self : this, function(mdcTools, materialLinearProgress) {
 
 	const MaterialProgress = function(params) {
 		this.label = params.label;
@@ -29,11 +31,14 @@
 			if (!node.isConnected)
 				return;
 
-			this.mdcLinearProgress = new materialLinearProgress.MDCLinearProgress(node.querySelector('.mdc-linear-progress'));
+			const el = node.querySelector('.mdc-linear-progress');
+			const linearProgress = this.mdcLinearProgress = new materialLinearProgress.MDCLinearProgress(el);
+			mdcTools.setMdcComponent(el, linearProgress);
+
 			if (this.value) {
-				this.mdcLinearProgress.progress = this.value();
+				linearProgress.progress = this.value();
 				this._valueSubscription = this.value.subscribe(newVal => {
-					this.mdcLinearProgress.progress = newVal;
+					linearProgress.progress = newVal;
 				});
 			}
 		},
