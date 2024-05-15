@@ -18,8 +18,8 @@
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
-		"@material/fab": "^14.0.0",
 		"@knockout-mdc/mdc-tools": "^1.1.0",
+		"@material/fab": "^14.0.0",
 		"@skolaris/knockout-tools": "^1.0.0",
 		"knockout": "^3.5.1"
 	},
