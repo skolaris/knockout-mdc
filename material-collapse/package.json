@@ -1,0 +1,31 @@
+{
+	"name": "@knockout-mdc/material-collapse",
+	"description": "A KnockoutJS implementation of a collapsible element in form of a component called material-collapse",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"collapse"
+	],
+	"main": "material-collapse.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-collapse"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
