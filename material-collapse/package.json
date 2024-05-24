@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-collapse",
 	"description": "A KnockoutJS material collapsible element component",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

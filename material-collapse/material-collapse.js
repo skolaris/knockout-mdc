@@ -38,7 +38,8 @@
 			});
 
 			this._layout();
-			this._openedSubscription = this.opened.subscribe(() => this._layout());
+			if (ko.isObservable(this.opened))
+				this._openedSubscription = this.opened.subscribe(() => this._layout());
 		},
 		'dispose': function() {
 			this._openedSubscription?.dispose();
@@ -46,7 +47,7 @@
 		},
 
 		'_layout': function() {
-			if (this.opened()) {
+			if (ko.unwrap(this.opened)) {
 				this._resizeObserver.observe(this.content);
 				setTimeout(() => this.node.classList.add('material-collapse--expanded'), transitionDuration);
 			}
