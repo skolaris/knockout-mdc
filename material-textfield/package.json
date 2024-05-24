@@ -1,22 +1,27 @@
 {
-	"name": "@knockout-mdc/material-banner",
-	"description": "A KnockoutJS material collapsible banner component",
+	"name": "@knockout-mdc/material-textfield",
+	"description": "KnockoutJS adapters for mdc-text-field input and textarea wrappers in form of components called material-textfield and material-textarea",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
 		"mdc",
-		"banner"
+		"text-field",
+		"textfield",
+		"textarea",
+		"adapter",
+		"mdc-text-field"
 	],
-	"main": "material-banner.js",
+	"main": "material-textfield.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/skolaris/knockout-mdc.git",
-		"directory": "material-banner"
+		"directory": "material-textfield"
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
-		"@knockout-mdc/material-collapse": "^1.0.0",
+		"@knockout-mdc/mdc-tools": "^1.1.0",
+		"@material/text-field": "^14.0.0",
 		"@skolaris/knockout-tools": "^1.0.0",
 		"knockout": "^3.5.1"
 	},
