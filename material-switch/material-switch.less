@@ -1,0 +1,33 @@
+﻿material-switch {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	.material-switch__label {
+		flex: 1;
+		margin-right: 8px;
+
+		&.material-switch__label--structured {
+			display: flex;
+			flex-direction: column;
+
+			.material-switch__label-help {
+				color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
+				font-size: 13px;
+				font-weight: 500;
+				line-height: 1.25em;
+			}
+		}
+	}
+}
+
+material-switch + material-switch {
+	margin-top: 24px;
+}
+
+html[dir="rtl"] material-switch {
+	.material-switch__label {
+		margin-right: 0;
+		margin-left: 8px;
+	}
+}

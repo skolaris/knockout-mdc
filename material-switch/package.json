@@ -1,0 +1,36 @@
+{
+	"name": "@knockout-mdc/material-switch",
+	"description": "A KnockoutJS adapter for mdc-switch in form of a component called material-switch",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"switch",
+		"adapter",
+		"mdc-switch"
+	],
+	"main": "material-switch.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-switch"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@knockout-mdc/mdc-tools": "^1.1.0",
+		"@material/switch": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
