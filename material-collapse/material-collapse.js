@@ -14,7 +14,9 @@
 	}
 }(typeof self !== 'undefined' ? self : this, function() {
 
-	const transitionDuration = 175; //ms
+	const transitionDuration = 175, //ms
+		collapsedClass = 'material-collapse--collapsed',
+		expandedClass = 'material-collapse--expanded';
 
 	var MaterialCollapse = function(params) {
 		this.opened = params.opened;
@@ -28,6 +30,7 @@
 			if (!node.isConnected)
 				return;
 
+			node.classList.add(collapsedClass);
 			this.node = node;
 			this.content = node.querySelector('.material-collapse__content');
 			this._resizeObserver = new window.ResizeObserver(entries => {
@@ -48,13 +51,15 @@
 
 		'_layout': function() {
 			if (ko.unwrap(this.opened)) {
+				this.node.classList.remove(collapsedClass);
 				this._resizeObserver.observe(this.content);
-				setTimeout(() => this.node.classList.add('material-collapse--expanded'), transitionDuration);
+				setTimeout(() => this.node.classList.add(expandedClass), transitionDuration);
 			}
 			else {
-				this.node.classList.remove('material-collapse--expanded');
+				this.node.classList.remove(expandedClass);
 				this._resizeObserver.unobserve(this.content);
 				this._setMaxHeight(null);
+				setTimeout(() => this.node.classList.add(collapsedClass), transitionDuration);
 			}
 		},
 		'_setMaxHeight': function(height) {
