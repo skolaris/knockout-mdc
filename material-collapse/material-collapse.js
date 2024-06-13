@@ -52,8 +52,10 @@
 		'_layout': function() {
 			if (ko.unwrap(this.opened)) {
 				this.node.classList.remove(collapsedClass);
-				this._resizeObserver.observe(this.content);
-				setTimeout(() => this.node.classList.add(expandedClass), transitionDuration);
+				setTimeout(() => {
+					this._resizeObserver.observe(this.content);
+					setTimeout(() => this.node.classList.add(expandedClass), transitionDuration);
+				});
 			}
 			else {
 				this.node.classList.remove(expandedClass);
