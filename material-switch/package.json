@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/material-switch",
-	"description": "A KnockoutJS adapter for mdc-switch in form of a component called material-switch",
+	"description": "A KnockoutJS adapter for mdc-switch called material-switch",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [

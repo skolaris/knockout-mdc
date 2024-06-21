@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/material-progress",
-	"description": "A KnockoutJS adapter for mdc-linear-progress in form of a component called material-progress",
+	"description": "A KnockoutJS adapter for mdc-linear-progress called material-progress",
 	"version": "1.1.0",
 	"license": "MIT",
 	"keywords": [

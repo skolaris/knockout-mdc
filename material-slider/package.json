@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/material-slider",
-	"description": "A KnockoutJS adapter for mdc-slider in form of a component called material-slider",
+	"description": "A KnockoutJS adapter for mdc-slider called material-slider",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [

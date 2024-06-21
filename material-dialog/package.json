@@ -1,25 +1,25 @@
 {
-	"name": "@knockout-mdc/material-fab",
-	"description": "A KnockoutJS adapter for mdc-fab called material-fab",
-	"version": "1.1.0",
+	"name": "@knockout-mdc/material-dialog",
+	"description": "A KnockoutJS adapter for mdc-dialog called material-dialog",
+	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
 		"mdc",
-		"fab",
+		"dialog",
 		"adapter",
-		"mdc-fab"
+		"mdc-dialog"
 	],
-	"main": "material-fab.js",
+	"main": "material-dialog.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/skolaris/knockout-mdc.git",
-		"directory": "material-fab"
+		"directory": "material-dialog"
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
 		"@knockout-mdc/mdc-tools": "^1.1.0",
-		"@material/fab": "^14.0.0",
+		"@material/dialog": "^14.0.0",
 		"@skolaris/knockout-tools": "^1.0.0",
 		"knockout": "^3.5.1"
 	},

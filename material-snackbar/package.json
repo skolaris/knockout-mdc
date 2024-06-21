@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/material-snackbar",
-	"description": "A KnockoutJS adapter for mdc-snackbar in form of a component called material-snackbar",
+	"description": "A KnockoutJS adapter for mdc-snackbar called material-snackbar",
 	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [

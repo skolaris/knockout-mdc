@@ -1,6 +1,6 @@
 {
 	"name": "@knockout-mdc/material-spinner",
-	"description": "A KnockoutJS adapter for mdc-circular-progress in form of a component called material-spinner",
+	"description": "A KnockoutJS adapter for mdc-circular-progress called material-spinner",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [
