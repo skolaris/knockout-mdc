@@ -1,0 +1,35 @@
+{
+	"name": "@knockout-mdc/material-tab-bar",
+	"description": "A KnockoutJS adapter for mdc-tab-bar called material-tab-bar",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"tab-bar",
+		"adapter",
+		"mdc-tab-bar"
+	],
+	"main": "material-tab-bar.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-tab-bar"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@knockout-mdc/mdc-tools": "^1.1.0",
+		"@material/tab-bar": "^14.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
