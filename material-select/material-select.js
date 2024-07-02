@@ -85,7 +85,13 @@
 
 			//when the items for selection change, we need to update the layout
 			this._itemsSubscription = !ko.isObservable(this.items) ? null : this.items.subscribe(() => {
+				const value = this.mdcSelect.value;
 				setTimeout(() => this.mdcSelect?.layoutOptions());
+				//must restore selected value which might be in a different position now
+				setTimeout(() => {
+					if (this.mdcSelect && this.mdcSelect.menuItemValues.includes(value))
+						this.mdcSelect.value = value;
+				});
 			});
 
 			//menu must be on top level to ensure proper function
