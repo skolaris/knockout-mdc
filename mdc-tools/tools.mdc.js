@@ -44,8 +44,8 @@
 			});
 		},
 
-		//Converts null values to -1 and back so that given nullable string observable.
-		//Can be used as the selected value for material-select.
+		//Converts null values to -1 and back so that given nullable string observable
+		//can be used as the selected value for material-select.
 		'makeMdcSelectAdaptorForNullableString': function(observable) {
 			return ko.computed({
 				'read': function() {
