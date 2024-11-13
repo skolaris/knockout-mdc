@@ -1,0 +1,35 @@
+{
+	"name": "@knockout-mdc/material-list-item",
+	"description": "A KnockoutJS adapter for mdc-list-item called material-list-item",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"list-item",
+		"adapter",
+		"mdc-list-item"
+	],
+	"main": "material-list-item.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-list-item"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@material/list": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
