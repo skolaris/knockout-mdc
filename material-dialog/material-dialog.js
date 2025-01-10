@@ -22,10 +22,13 @@
 		this.id = params.id;
 		this.title = params.title;
 		this.modal = params.modal;
-		this.titleId = tools.getGuid();
-		this.contentId = tools.getGuid();
 		this.opened = params.opened;
 		this.closed = params.closed;
+		this.containerId = tools.getGuid();
+		this.titleId = tools.getGuid();
+
+		this._contentId = tools.getGuid();
+		this._defaultBtnSelector = `#${CSS.escape(this.containerId)} > .mdc-dialog__surface > .mdc-dialog__actions button[data-mdc-dialog-button-default]`;
 
 		//component lifetime
 		this.mdcDialog = null;
@@ -36,7 +39,7 @@
 				return;
 
 			const el = node.querySelector('.mdc-dialog');
-			el.querySelector('.mdc-dialog__content').id = this.contentId;
+			el.querySelector('.mdc-dialog__content').id = this._contentId;
 
 			const dialog = this.mdcDialog = new materialDialog.MDCDialog(el);
 			mdcTools.setMdcComponent(el, dialog);
@@ -52,9 +55,9 @@
 
 		'onOpened': function(vm, event) {
 			const dialogEl = document.getElementById(this.id);
-			const defaultEl = dialogEl.querySelector('.mdc-dialog__container .mdc-dialog__surface .mdc-dialog__actions button[data-mdc-dialog-button-default]');
-			if (defaultEl)
-				defaultEl.focus();
+			const defaultBtn = dialogEl.querySelector(this._defaultBtnSelector);
+			if (defaultBtn)
+				defaultBtn.focus();
 			else {
 				const autofocusEl = dialogEl.querySelector('[autofocus]');
 				autofocusEl?.focus();
@@ -69,7 +72,7 @@
 		'getSurfaceAttrs': function() {
 			return {
 				'aria-labelledby': this.titleId,
-				'aria-describedby': this.contentId
+				'aria-describedby': this._contentId
 			};
 		}
 	};
@@ -78,7 +81,7 @@
 		'viewModel': MaterialDialog,
 		'template':
 `<div class="mdc-dialog" data-bind="id: id, event: {'MDCDialog:opened': onOpened, 'MDCDialog:closed': onClosed}">
-	<div class="mdc-dialog__container">
+	<div class="mdc-dialog__container" data-bind="id: containerId">
 		<div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" tabindex="-1" data-bind="attr: getSurfaceAttrs()">
 			<!-- ko if: title -->
 			<h2 class="mdc-dialog__title" data-bind="id: titleId, html: title"></h2>

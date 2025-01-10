@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-dialog",
 	"description": "A KnockoutJS adapter for mdc-dialog called material-dialog",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
