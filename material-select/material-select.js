@@ -46,6 +46,9 @@
 		this._selectedIndexSubscription = null;
 		this._validationSubscription = null;
 		this._valueSubscription = null;
+
+		this._itemsTimestamp = 0;
+		this._changeTimestamp = 0;
 	};
 	MaterialSelect.prototype = {
 		'koDescendantsComplete': function(node) {
@@ -88,7 +91,11 @@
 				const value = this.mdcSelect.value;
 				setTimeout(() => this.mdcSelect?.layoutOptions());
 				//must restore selected value which might be in a different position now
+				const timestamp = ++this._itemsTimestamp;
 				setTimeout(() => {
+					if (timestamp != this._itemsTimestamp) //ignore if the value changed again
+						return;
+
 					if (this.mdcSelect && this.mdcSelect.menuItemValues.includes(value))
 						this.mdcSelect.value = value;
 				});
@@ -130,7 +137,11 @@
 
 		'onChanged': function(vm, event) {
 			//the changes to the observables could lead to menu items changing, so must wait till mdc processing is done
+			const timestamp = ++this._changeTimestamp;
 			setTimeout(() => {
+				if (timestamp != this._changeTimestamp) //ignore if the value changed again
+					return;
+
 				if (this.selectedIndex)
 					this.selectedIndex(event.detail.index);
 
