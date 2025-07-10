@@ -1,25 +1,27 @@
 {
-	"name": "@knockout-mdc/material-list",
-	"description": "A KnockoutJS adapter for mdc-list called material-list",
+	"name": "@knockout-mdc/material-menu",
+	"description": "A KnockoutJS adapter for mdc-menu called material-menu",
 	"version": "1.0.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
 		"mdc",
-		"list",
+		"menu",
 		"adapter",
-		"mdc-list"
+		"mdc-menu"
 	],
-	"main": "material-list.js",
+	"main": "material-menu.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/skolaris/knockout-mdc.git",
-		"directory": "material-list"
+		"directory": "material-menu"
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
+		"@knockout-mdc/material-list": "^1.0.0",
 		"@knockout-mdc/mdc-tools": "^1.1.0",
-		"@material/list": "^14.0.0",
+		"@material/menu": "^14.0.0",
+		"@skolaris/knockout-tools": "^1.0.0",
 		"knockout": "^3.5.1"
 	},
 	"scripts": {
