@@ -66,20 +66,14 @@
 			if (this.selectedIndex) {
 				select.selectedIndex = this.selectedIndex();
 				this._selectedIndexSubscription = this.selectedIndex.subscribe(newVal => {
-					setTimeout(() => {
-						if (this.mdcSelect && this.mdcSelect.selectedIndex != newVal)
-							this.mdcSelect.selectedIndex = newVal;
-					});
+					if (this.mdcSelect && this.mdcSelect.selectedIndex != newVal)
+						this.mdcSelect.selectedIndex = newVal;
 				});
 			}
 			if (this.value) {
 				select.value = this.value();
-				this._valueSubscription = this.value.subscribe(newVal => {
-					setTimeout(() => {
-						if (this.mdcSelect && this.mdcSelect.value != newVal)
-							this.mdcSelect.value = newVal;
-					});
-				});
+				//setup change of selected value when the observable is changed
+				this._valueSubscription = this.value.subscribe(newVal => this._selectValue(newVal));
 			}
 			if (this.validate) {
 				select.valid = this.validationValue.isValid();
@@ -93,11 +87,11 @@
 				//must restore selected value which might be in a different position now
 				const timestamp = ++this._itemsTimestamp;
 				setTimeout(() => {
-					if (timestamp != this._itemsTimestamp) //ignore if the value changed again
+					if (!this.mdcSelect || timestamp != this._itemsTimestamp) //ignore if the value changed again
 						return;
 
-					if (this.mdcSelect && this.mdcSelect.menuItemValues.includes(value))
-						this.mdcSelect.value = value;
+					if (this.mdcSelect.menuItemValues.includes(value)) //ignore if the original value is no longer there
+						this._selectValue(value);
 				});
 			});
 
@@ -139,7 +133,7 @@
 			//the changes to the observables could lead to menu items changing, so must wait till mdc processing is done
 			const timestamp = ++this._changeTimestamp;
 			setTimeout(() => {
-				if (timestamp != this._changeTimestamp) //ignore if the value changed again
+				if (timestamp != this._changeTimestamp) //ignore if the value changed again in the meantime
 					return;
 
 				if (this.selectedIndex)
@@ -151,6 +145,11 @@
 				if (this.select)
 					this.select(event.detail.value, event.detail.index);
 			});
+		},
+
+		'_selectValue': function(newVal) {
+			if (this.mdcSelect && this.mdcSelect.value != newVal)
+				this.mdcSelect.value = newVal;
 		}
 	};
 
