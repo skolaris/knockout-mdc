@@ -133,7 +133,7 @@
 			//the changes to the observables could lead to menu items changing, so must wait till mdc processing is done
 			const timestamp = ++this._changeTimestamp;
 			setTimeout(() => {
-				if (timestamp != this._changeTimestamp) //ignore if the value changed again in the meantime
+				if (!this.mdcSelect || timestamp != this._changeTimestamp) //ignore if the value changed again in the meantime
 					return;
 
 				if (this.selectedIndex)
