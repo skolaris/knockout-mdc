@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-select",
 	"description": "A KnockoutJS adapter for mdc-select called material-select",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

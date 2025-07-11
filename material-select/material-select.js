@@ -49,6 +49,7 @@
 
 		this._itemsTimestamp = 0;
 		this._changeTimestamp = 0;
+		this._pendingValue = null;
 	};
 	MaterialSelect.prototype = {
 		'koDescendantsComplete': function(node) {
@@ -73,7 +74,10 @@
 			if (this.value) {
 				select.value = this.value();
 				//setup change of selected value when the observable is changed
-				this._valueSubscription = this.value.subscribe(newVal => this._selectValue(newVal));
+				this._valueSubscription = this.value.subscribe(newVal => {
+					this._pendingValue = newVal; //store the value to restore it later if we're in the middle of items change
+					this._selectValue(newVal);
+				});
 			}
 			if (this.validate) {
 				select.valid = this.validationValue.isValid();
@@ -82,16 +86,16 @@
 
 			//when the items for selection change, we need to update the layout
 			this._itemsSubscription = !ko.isObservable(this.items) ? null : this.items.subscribe(() => {
-				const value = this.mdcSelect.value;
-				setTimeout(() => this.mdcSelect?.layoutOptions());
-				//must restore selected value which might be in a different position now
 				const timestamp = ++this._itemsTimestamp;
+				this._pendingValue = this.mdcSelect.value;
 				setTimeout(() => {
 					if (!this.mdcSelect || timestamp != this._itemsTimestamp) //ignore if the value changed again
 						return;
 
-					if (this.mdcSelect.menuItemValues.includes(value)) //ignore if the original value is no longer there
-						this._selectValue(value);
+					this.mdcSelect.layoutOptions();
+					//must restore selected value which might be in a different position now
+					if (this.mdcSelect.menuItemValues.includes(this._pendingValue)) //ignore if the value is not there
+						this._selectValue(this._pendingValue);
 				});
 			});
 
@@ -136,10 +140,10 @@
 				if (!this.mdcSelect || timestamp != this._changeTimestamp) //ignore if the value changed again in the meantime
 					return;
 
-				if (this.selectedIndex)
+				if (this.selectedIndex && this.selectedIndex() !== event.detail.index)
 					this.selectedIndex(event.detail.index);
 
-				if (this.value)
+				if (this.value && this.value() !== event.detail.value)
 					this.value(event.detail.value);
 
 				if (this.select)
@@ -148,7 +152,7 @@
 		},
 
 		'_selectValue': function(newVal) {
-			if (this.mdcSelect && this.mdcSelect.value != newVal)
+			if (this.mdcSelect && this.mdcSelect.value !== newVal)
 				this.mdcSelect.value = newVal;
 		}
 	};
