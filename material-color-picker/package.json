@@ -1,0 +1,33 @@
+{
+	"name": "@knockout-mdc/material-color-picker",
+	"description": "A KnockoutJS material color picker component",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"knockout",
+		"mdc",
+		"color-picker"
+	],
+	"main": "material-color-picker.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/skolaris/knockout-mdc.git",
+		"directory": "material-color-picker"
+	},
+	"author": "Martin Klemsa",
+	"peerDependencies": {
+		"@knockout-mdc/material-list-item": "^1.0.0",
+		"@knockout-mdc/material-menu-button": "^1.0.0",
+		"knockout": "^3.5.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/skolaris/knockout-mdc/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"homepage": "https://github.com/skolaris/knockout-mdc#readme"
+}
