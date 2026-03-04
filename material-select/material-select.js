@@ -157,6 +157,8 @@
 		}
 	};
 
+    const nodes = '$componentTemplateNodes';
+
 	return {
 		'viewModel': MaterialSelect,
 		'template':
@@ -194,7 +196,7 @@
 	</div>
 	<div class="mdc-select__menu mdc-menu mdc-menu-surface">
 		<ul class="mdc-deprecated-list"
-			data-bind="template: {'nodes': $componentTemplateNodes.length > 0 ? $componentTemplateNodes : $parentContext.$componentTemplateNodes, 'data': $parent}"></ul>
+			data-bind="template: {'nodes': ${nodes}.length > 0 ? ${nodes} : $parentContext.${nodes}, 'data': $parent}"></ul>
 		<!-- this special binding allows one level of nesting, hence custom components can be created wrapping the material-select -->
 	</div>
 </div>

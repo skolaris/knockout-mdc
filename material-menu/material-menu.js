@@ -149,12 +149,14 @@
 		}
 	};
 
+    const nodes = '$componentTemplateNodes';
+
 	return {
 		'viewModel': MaterialMenu,
 		'template':
 `<div class="mdc-menu mdc-menu-surface" data-bind="id: id, css: css, event: {'MDCMenu:selected': onSelected.bind($component)}">
 	<ul class="mdc-deprecated-list" role="menu" aria-orientation="vertical"
-		data-bind="css: childList.getCss(), template: {'nodes': $componentTemplateNodes.length > 0 ? $componentTemplateNodes : $parentContext.$componentTemplateNodes, 'data': $parent}"></ul>
+		data-bind="css: childList.getCss(), template: {'nodes': ${nodes}.length > 0 ? ${nodes} : $parentContext.${nodes}, 'data': $parent}"></ul>
 </div>`
 	};
 
