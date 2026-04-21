@@ -16,7 +16,7 @@
 	},
 	"author": "Martin Klemsa",
 	"peerDependencies": {
-		"knockout": "^3.5.1"
+		"knockout": "^3.5.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

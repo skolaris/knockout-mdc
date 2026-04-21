@@ -19,8 +19,8 @@
 		"@knockout-mdc/material-button": "^1.1.0",
 		"@knockout-mdc/material-icon-button": "^1.1.1",
 		"@knockout-mdc/material-menu": "^1.0.0",
-		"@skolaris/knockout-tools": "^1.0.0",
-		"knockout": "^3.5.1"
+		"@skolaris/knockout-tools": "^1.2.0",
+		"knockout": "^3.5.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

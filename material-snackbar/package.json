@@ -20,8 +20,8 @@
 	"peerDependencies": {
 		"@knockout-mdc/mdc-tools": "^1.1.0",
 		"@material/snackbar": "^14.0.0",
-		"@skolaris/knockout-tools": "^1.0.0",
-		"knockout": "^3.5.1"
+		"@skolaris/knockout-tools": "^1.2.0",
+		"knockout": "^3.5.2"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
