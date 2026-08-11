@@ -55,14 +55,17 @@
 			if (this.validate)
 				this.mdcHelperText = new materialTextfield.MDCTextFieldHelperText(node.querySelector('.mdc-text-field-helper-text'));
 
+			const foundation = textField.foundation;
+			if (typeof this.value.isValid === 'function') //usual knockout observable validation
+				foundation.useNativeValidation = false;
+
 			this._valueSubscription = this.value.subscribe(() => {
 				//necessary hack to update the label style when knockout changes the value
 				const shouldFloat = textField.value.length > 0;
-				const foundation = textField.foundation;
 				foundation.notchOutline(shouldFloat);
 				foundation.adapter.floatLabel(shouldFloat);
 				foundation.styleFloating(shouldFloat);
-				if (this.value.isValid) {
+				if (!foundation.useNativeValidation) {
 					textField.valid = this.value.isValid();
 					//NOTE: this will not work if ko.option.deferUpdates is true, as the validation will not have run yet
 				}

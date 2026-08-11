@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-textfield",
 	"description": "KnockoutJS adapters for mdc-text-field input and textarea wrappers in form of components called material-textfield and material-textarea",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",
