@@ -1,7 +1,7 @@
 {
 	"name": "@knockout-mdc/material-menu",
 	"description": "A KnockoutJS adapter for mdc-menu called material-menu",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"license": "MIT",
 	"keywords": [
 		"knockout",

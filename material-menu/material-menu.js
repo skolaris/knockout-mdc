@@ -34,7 +34,6 @@
 		this.mdcRipples = [];
 		this._selectedIndexSubscription = null;
 		this._valueSubscription = null;
-		this._handleKeyDown = null;
 		this._mutationObserver = null;
 	};
 	MaterialMenu.prototype = {
@@ -51,9 +50,10 @@
 				this.mdcRipples = list.listElements.map(listItemEl => new materialRipple.MDCRipple(listItemEl));
 
 			menu.setIsHoisted(true);
-			if (this.selectedIndex || this.value)
+			if (this.selectedIndex || this.value) {
 				list.singleSelection = true;
-
+				list.hasTypeahead = true;
+			}
 			if (this.selectedIndex) {
 				list.selectedIndex = this.selectedIndex();
 				this._selectedIndexSubscription = this.selectedIndex.subscribe(newVal => {
@@ -69,36 +69,6 @@
 
 			list.listElements.forEach(listEl => listEl.setAttribute('role', 'menuitem'));
 
-			let typedChars = '';
-			this._handleKeyDown = ev => {
-				if (!menu.open)
-					return;
-
-				const surfaceAnchor = closest(ev.target, '.mdc-menu-surface--anchor'),
-					isMenuButton = surfaceAnchor?.getAttribute('data-menu') == menu.root.id;
-				
-				const closestMenu = closest(ev.target, '.mdc-menu'),
-					targetMenu = closestMenu && mdcTools.getMdcComponent(closestMenu);
-
-				if (isMenuButton || targetMenu == menu) {
-					typedChars += ev.key.toLowerCase();
-					const items = menu.items;
-
-					//loop through list items and find the first item that starts with the pressed keys
-					for (const item of items) {
-						if (!isVisible(item))
-							continue;
-
-						if (item.querySelector('.mdc-deprecated-list-item__text').textContent.trim().toLowerCase().startsWith(typedChars)) {
-							menu.foundation.adapter.focusItemAtIndex(items.indexOf(item));
-							break;
-						}
-					}
-					setTimeout(() => typedChars = '', 500);
-				}
-			};
-			document.addEventListener('keydown', this._handleKeyDown);
-
 			//menu must be on top level to ensure proper function
 			document.body.appendChild(menu.root);
 
@@ -107,9 +77,6 @@
 		},
 		'dispose': function() {
 			this._mutationObserver?.disconnect();
-			if (this._handleKeyDown)
-				document.removeEventListener('keydown', this._handleKeyDown);
-
 			this._selectedIndexSubscription?.dispose();
 			this._valueSubscription?.dispose();
 
@@ -135,6 +102,9 @@
 					this.select(value, event.detail.index);
 			});
 		},
+		'focusSelectedItem': function() {
+			this.mdcMenu.foundation.adapter.focusItemAtIndex(this.mdcMenu.list.selectedIndex);
+		},
 
 		'_findListItemIndex': function(value) {
 			return this.mdcMenu.list.listElements.findIndex(listItem => listItem.getAttribute('data-value') == value);
@@ -159,19 +129,4 @@
 		data-bind="css: childList.getCss(), template: {'nodes': ${nodes}.length > 0 ? ${nodes} : $parentContext.${nodes}, 'data': $parent}"></ul>
 </div>`
 	};
-
-	function closest(el, selector) {
-		while (el && el !== document) {
-			if (el.matches && el.matches(selector))
-				return el;
-
-			el = el.parentElement;
-		}
-		return null;
-	}
-
-	function isVisible(elem) {
-		return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length) &&
-			window.getComputedStyle(elem).visibility !== 'hidden';
-	}
 }));
