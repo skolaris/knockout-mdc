@@ -44,11 +44,16 @@
 			if (!this.bindMenu())
 				this.bindMenu(true);
 			else
-				this.childMenu.mdcMenu.open = true;
+				this._openChildMenu();
 		},
 		'onMenuRendered': function(node) {
 			this.childMenu.koDescendantsComplete(node.parentElement);
+			this._openChildMenu();
+		},
+
+		'_openChildMenu': function() {
 			this.childMenu.mdcMenu.open = true;
+			setTimeout(() => this.childMenu.focusSelectedItem());
 		}
 	};
 
