@@ -103,7 +103,9 @@
 			});
 		},
 		'focusSelectedItem': function() {
-			this.mdcMenu.foundation.adapter.focusItemAtIndex(this.mdcMenu.list.selectedIndex);
+			const index = this.mdcMenu.list.selectedIndex;
+			if (index >= 0)
+				this.mdcMenu.foundation.adapter.focusItemAtIndex(index);
 		},
 
 		'_findListItemIndex': function(value) {
